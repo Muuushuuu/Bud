@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import td.info507.bud.R
 
@@ -13,8 +14,6 @@ abstract class CardAdapter : RecyclerView.Adapter<CardAdapter.CardHolder>() {
 
     class CardHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val layout: LinearLayout = itemView.findViewById(R.id.card_layout)
-        /*val value: TextView = itemView.findViewById(R.id.card_value)
-        val description: TextView = itemView.findViewById(R.id.card_description)*/
     }
 
     abstract fun onClickListener(view: View)
@@ -22,21 +21,26 @@ abstract class CardAdapter : RecyclerView.Adapter<CardAdapter.CardHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_card, parent, false)
-        view.setOnClickListener{
-//            Toast.makeText(parent.context,"Coucou, ", Toast.LENGTH_LONG)
-//            var intent = Intent(parent.context, CardActivity::class.java)
+
+        // Ajouter le click listener
+        view.setOnClickListener {
+            // Afficher un Toast
+            Toast.makeText(parent.context, "Coucou Nathan", Toast.LENGTH_LONG).show()
+
+            // Appel de la méthode abstraite onClickListener
             onClickListener(view)
         }
+
         return CardHolder(view)
     }
-    // Lie les données de l’item à son ViewHolder
-    override fun onBindViewHolder(holder: CardHolder, position: Int){
-        holder.layout.setBackgroundColor(Color.YELLOW)
-        /*holder.value.text = "Kfé"
-        holder.description.text = "Une pause s'impose"*/
+
+    // Lier les données de l’item à son ViewHolder
+    override fun onBindViewHolder(holder: CardHolder, position: Int) {
+        // Ajouter ici la logique pour remplir les données de la vue si nécessaire
     }
-    // Retourne le nombre d’items total à afficher
-    override fun getItemCount(): Int{
+
+    // Retourner le nombre d’items total à afficher
+    override fun getItemCount(): Int {
         return 10
     }
 }
