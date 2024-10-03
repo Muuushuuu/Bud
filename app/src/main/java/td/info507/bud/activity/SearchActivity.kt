@@ -5,7 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import td.info507.bud.R
-import td.info507.bud.dialog.CardAdapter
+import td.info507.bud.adapter.CardAdapter
 
 class SearchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

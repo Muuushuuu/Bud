@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import td.info507.bud.R
-import td.info507.bud.dialog.CardAdapter
+import td.info507.bud.adapter.CardAdapter
+import td.info507.bud.dialog.dialogAdd
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,6 +21,10 @@ class MainActivity : AppCompatActivity() {
             override fun onClickListener(view: View) {
                 println("Item clicked")
             }
+        }
+
+        findViewById<FloatingActionButton>(R.id.fab_add).setOnClickListener(){
+            dialogAdd().show(supportFragmentManager, null)
         }
     }
 }
