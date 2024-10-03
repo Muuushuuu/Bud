@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Bud</string>
+
+
+    <string name="main_activity_title">Mes Plantes</string>
+    <string name="main_activity_description">Bud, votre compagnon décontracté pour prendre soin de vos plantes avec des rappels faciles et des conseils pratiques !</string>
+
+
 </resources>
