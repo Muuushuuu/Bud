@@ -10,9 +10,12 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import td.info507.bud.R
 
+// Adapter personnalisé pour RecyclerView
 abstract class CardAdapter : RecyclerView.Adapter<CardAdapter.CardHolder>() {
 
+    // ViewHolder pour chaque élément de la RecyclerView
     class CardHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        // Récupération des vues de l'item
         val card: LinearLayout = itemView.findViewById(R.id.card_layout)
         val image: ImageView = itemView.findViewById(R.id.item_image)
         val name : TextView = itemView.findViewById(R.id.item_name)
@@ -24,20 +27,22 @@ abstract class CardAdapter : RecyclerView.Adapter<CardAdapter.CardHolder>() {
         val difficulte : TextView = itemView.findViewById(R.id.item_difficulte)
     }
 
+    // Méthode abstraite pour définir une action lors du clic
     abstract fun onClickListener(view: View)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardHolder {
+        // Créer la vue de l'item
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_card, parent, false)
-        // Ajouter le click listener
+        // Ajouter un Toast et un clic listener
         view.setOnClickListener {
-            // Afficher un Toast ==> Test
             Toast.makeText(parent.context, "Coucou Nathan", Toast.LENGTH_LONG).show()
             onClickListener(view)
         }
         return CardHolder(view)
     }
 
-    // Lier les données de l’item à son ViewHolder
+    // Liaison des données à l'item
+    // A remplacer par les informations dans le json
     override fun onBindViewHolder(holder: CardHolder, position: Int) {
         holder.name.text = "Plante Salon"
         holder.type.text = "Hibiscus"
@@ -48,7 +53,7 @@ abstract class CardAdapter : RecyclerView.Adapter<CardAdapter.CardHolder>() {
         holder.difficulte.text = "Moyen"
     }
 
-    // Retourner le nombre d’items total à afficher
+    // Nombre d'items à afficher
     override fun getItemCount(): Int {
         return 10
     }

@@ -12,13 +12,13 @@ class SearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
 
-
+        // Récupère RecyclerView
         val list_of_plant = findViewById<RecyclerView>(R.id.card_list_of_plants)
 
-        // Implémentation de l'adapter avec une définition de onClickListener
+        // Set adapter avec listener
         list_of_plant.adapter = object : CardAdapter() {
             override fun onClickListener(view: View) {
-                println("Item clicked")
+                println("Item clicked") // Action clic sur un élément
             }
         }
     }
