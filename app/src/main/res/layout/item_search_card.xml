@@ -17,7 +17,6 @@
         android:layout_height="match_parent"
         android:layout_weight="2"
         android:scaleType="centerCrop"
-        android:src="@drawable/hibiscus"
         android:layout_marginRight="12dp"/>
 
     <!-- partie de droite -->

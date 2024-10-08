@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import td.info507.bud.R
 
 // Adapter personnalisé pour RecyclerView
-abstract class CardAdapter : RecyclerView.Adapter<CardAdapter.CardHolder>() {
+abstract class CardMainAdapter : RecyclerView.Adapter<CardMainAdapter.CardHolder>() {
 
     // ViewHolder pour chaque élément de la RecyclerView
     class CardHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

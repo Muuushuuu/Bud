@@ -2,38 +2,40 @@ package td.info507.bud.storage
 
 import android.content.Context
 import org.json.JSONObject
-import td.info507.bud.modele.Card
+import td.info507.bud.modele.CardSearchModel
 import td.info507.bud.storage.utility.Storage
 import td.info507.bud.storage.utility.file.JSONFileStorage
 
-class CardJSONFileStorage(context: Context) : JSONFileStorage<Card>(context, "card"),
-    Storage<Card> {
+class CardJSONFileStorage(context: Context) : JSONFileStorage<CardSearchModel>(context, "card"),
+    Storage<CardSearchModel> {
 
-    override fun create(id: Int, obj: Card): Card {
-        return Card(id, obj.nom, obj.description, obj.taille, obj.arrosage, obj.lumiere, obj.difficulte)
+    override fun create(id: Int, obj: CardSearchModel): CardSearchModel {
+        return CardSearchModel(id, obj.nom, obj.description, obj.taille, obj.arrosage, obj.lumiere, obj.difficulte, obj.image)
     }
 
-    override fun objectToJson(id: Int, obj: Card): JSONObject {
+    override fun objectToJson(id: Int, obj: CardSearchModel): JSONObject {
         val json = JSONObject()
-        json.put(Card.ID, obj.id)
-        json.put(Card.NOM, obj.nom)
-        json.put(Card.DESCRIPTION, obj.description)
-        json.put(Card.TAILLE, obj.taille)
-        json.put(Card.ARROSAGE, obj.arrosage)
-        json.put(Card.LUMIERE, obj.lumiere)
-        json.put(Card.DIFFICULTE, obj.difficulte)
+        json.put(CardSearchModel.ID, obj.id)
+        json.put(CardSearchModel.NOM, obj.nom)
+        json.put(CardSearchModel.DESCRIPTION, obj.description)
+        json.put(CardSearchModel.TAILLE, obj.taille)
+        json.put(CardSearchModel.ARROSAGE, obj.arrosage)
+        json.put(CardSearchModel.LUMIERE, obj.lumiere)
+        json.put(CardSearchModel.DIFFICULTE, obj.difficulte)
+        json.put(CardSearchModel.IMAGE, obj.image)
         return json
     }
 
-    override fun jsonToObject(json: JSONObject): Card {
-        return Card(
-            json.getInt(Card.ID),
-            json.getString(Card.NOM),
-            json.getString(Card.DESCRIPTION),
-            json.getString(Card.TAILLE),
-            json.getString(Card.ARROSAGE),
-            json.getString(Card.LUMIERE),
-            json.getString(Card.DIFFICULTE),
+    override fun jsonToObject(json: JSONObject): CardSearchModel {
+        return CardSearchModel(
+            json.getInt(CardSearchModel.ID),
+            json.getString(CardSearchModel.NOM),
+            json.getString(CardSearchModel.DESCRIPTION),
+            json.getString(CardSearchModel.TAILLE),
+            json.getString(CardSearchModel.ARROSAGE),
+            json.getString(CardSearchModel.LUMIERE),
+            json.getString(CardSearchModel.DIFFICULTE),
+            json.optString(CardSearchModel.IMAGE, "") // Utilisation correcte de optString()
         )
     }
 }

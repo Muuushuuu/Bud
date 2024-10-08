@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import td.info507.bud.R
-import td.info507.bud.adapter.CardAdapter
-import td.info507.bud.dialog.dialogAdd
+import td.info507.bud.adapter.CardMainAdapter
+import td.info507.bud.dialog.DialogAdd
 import td.info507.bud.request.CardRequest
 
 class MainActivity : Updatable, AppCompatActivity() {
@@ -24,7 +24,7 @@ class MainActivity : Updatable, AppCompatActivity() {
         list_of_plant = findViewById(R.id.card_list_of_plants)
 
         // Set adapter avec listener
-        list_of_plant.adapter = object : CardAdapter() {
+        list_of_plant.adapter = object : CardMainAdapter() {
             override fun onClickListener(view: View) {
                 println("Item clicked") // Action clic sur un élément
             }
@@ -37,7 +37,7 @@ class MainActivity : Updatable, AppCompatActivity() {
 
         // Bouton flottant pour ajouter un nouvel élément
         findViewById<FloatingActionButton>(R.id.fab_add).setOnClickListener(){
-            dialogAdd().show(supportFragmentManager, null)
+            DialogAdd().show(supportFragmentManager, null)
         }
     }
 

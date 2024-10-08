@@ -1,14 +1,13 @@
 package td.info507.bud.request
 
 import android.content.Context
-import android.util.Log
 import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONArray
 import td.info507.bud.activity.Updatable
-import td.info507.bud.modele.Card
+import td.info507.bud.modele.CardSearchModel
 import td.info507.bud.storage.CardStorage
 
 class CardRequest(
@@ -25,7 +24,6 @@ class CardRequest(
                 delete()
                 insert(res.getJSONArray("plants"))
                 updatable.update()
-//                Log.d("Requesttttt", res.toString())
                 Toast.makeText(context, "success", Toast.LENGTH_SHORT).show()
             },
             { err -> Toast.makeText(context, "error", Toast.LENGTH_SHORT).show() }
@@ -44,14 +42,15 @@ class CardRequest(
         for (i in 0 until array.length()) {
             val card = array.getJSONObject(i)
             CardStorage.get(context).insert(
-                Card(
+                CardSearchModel(
                     0,
-                    card.optString(Card.NOM, "Nom inconnu"),
-                    card.optString(Card.DESCRIPTION, "Description non disponible"),
-                    card.optString(Card.TAILLE, "Taille non spécifiée"),
-                    card.optString(Card.ARROSAGE, "Arrosage inconnu"),
-                    card.optString(Card.LUMIERE, "Lumière non précisée"),
-                    card.optString(Card.DIFFICULTE, "Difficulté non précisée"),
+                    card.optString(CardSearchModel.NOM, "Nom inconnu"),
+                    card.optString(CardSearchModel.DESCRIPTION, "Description non disponible"),
+                    card.optString(CardSearchModel.TAILLE, "Taille non spécifiée"),
+                    card.optString(CardSearchModel.ARROSAGE, "Arrosage inconnu"),
+                    card.optString(CardSearchModel.LUMIERE, "Lumière non précisée"),
+                    card.optString(CardSearchModel.DIFFICULTE, "Difficulté non précisée"),
+                    card.optString(CardSearchModel.IMAGE, "https://images.unsplash.com/photo-1497250681960-ef046c08a56e?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                 )
             )
         }
