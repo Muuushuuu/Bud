@@ -32,14 +32,20 @@
              android:text="@string/main_activity_description"
              android:letterSpacing="0.1"/>
       </LinearLayout>
-
-      <androidx.recyclerview.widget.RecyclerView
-          android:id="@+id/card_list_of_plants"
+      <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+          android:id="@+id/card_refresh"
           android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:scrollbars="vertical"
-          app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-          android:layout_marginTop="16dp"/>
+          android:layout_height="match_parent">
+
+         <androidx.recyclerview.widget.RecyclerView
+             android:id="@+id/card_list_of_plants"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:scrollbars="vertical"
+             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+             android:layout_marginTop="16dp"/>
+
+      </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
    </LinearLayout>
 
