@@ -2,7 +2,7 @@ package td.info507.bud.storage
 
 import android.content.Context
 import android.content.SharedPreferences
-import td.info507.bud.modele.Card
+import td.info507.bud.modele.CardSearchModel
 import td.info507.bud.storage.utility.Storage
 
 object CardStorage {
@@ -36,8 +36,8 @@ object CardStorage {
         getPreferences(context).edit().putInt(STORAGE, prefStorage).apply()
     }
 
-    fun get(context: Context): Storage<Card> {
-        var storage: Storage<Card> = CardNoneStorage()
+    fun get(context: Context): Storage<CardSearchModel> {
+        var storage: Storage<CardSearchModel> = CardNoneStorage()
         when (getStorage(context)) {
             NONE -> storage = CardNoneStorage()
             FILE_JSON -> storage = CardJSONFileStorage(context)

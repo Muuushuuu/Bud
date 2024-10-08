@@ -7,7 +7,7 @@ import androidx.fragment.app.DialogFragment
 import td.info507.bud.R
 
 // Fragment de dialogue pour ajouter un élément
-class dialogAdd : DialogFragment() {
+class DialogAdd : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         // Charger la vue du layout pour le dialogue
