@@ -22,10 +22,10 @@ class CardRequest(
             "https://mcida.fr/plants.json",
             null,
             { res ->
-                //delete()
-                //insert(res.getJSONArray("plants"))
+                delete()
+                insert(res.getJSONArray("plants"))
                 updatable.update()
-                Log.d("Requesttttt", res.toString())
+//                Log.d("Requesttttt", res.toString())
                 Toast.makeText(context, "success", Toast.LENGTH_SHORT).show()
             },
             { err -> Toast.makeText(context, "error", Toast.LENGTH_SHORT).show() }
@@ -46,12 +46,12 @@ class CardRequest(
             CardStorage.get(context).insert(
                 Card(
                     0,
-                    card.getString(Card.NOM),
-                    card.getString(Card.DESCRIPTION),
-                    card.getString(Card.TAILLE),
-                    card.getString(Card.ARROSAGE),
-                    card.getString(Card.LUMIERE),
-                    card.getString(Card.DIFFICULTE),
+                    card.optString(Card.NOM, "Nom inconnu"),
+                    card.optString(Card.DESCRIPTION, "Description non disponible"),
+                    card.optString(Card.TAILLE, "Taille non spécifiée"),
+                    card.optString(Card.ARROSAGE, "Arrosage inconnu"),
+                    card.optString(Card.LUMIERE, "Lumière non précisée"),
+                    card.optString(Card.DIFFICULTE, "Difficulté non précisée"),
                 )
             )
         }

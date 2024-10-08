@@ -1,5 +1,7 @@
 package td.info507.bud.adapter
 
+import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,13 +11,14 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import td.info507.bud.R
-import td.info507.bud.adapter.CardAdapter.CardHolder
+import td.info507.bud.modele.Card
+import td.info507.bud.storage.CardStorage
 
-abstract class CardSearchAdapter: RecyclerView.Adapter<CardSearchAdapter.CardHolder>() {
+abstract class CardSearchAdapter(private val context: Context, val cards: List<Card>): RecyclerView.Adapter<CardSearchAdapter.CardHolder>() {
 
     class CardHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val card: LinearLayout = itemView.findViewById(R.id.card_search_layout)
-        val image: ImageView = itemView.findViewById(R.id.item_search_image)
+//        val card: LinearLayout = itemView.findViewById(R.id.card_search_layout)
+//        val image: ImageView = itemView.findViewById(R.id.item_search_image)
         val type : TextView = itemView.findViewById(R.id.item_search_type)
         val description  : TextView = itemView.findViewById(R.id.item_search_description)
         val taille : TextView = itemView.findViewById(R.id.item_search_taille)
@@ -40,12 +43,18 @@ abstract class CardSearchAdapter: RecyclerView.Adapter<CardSearchAdapter.CardHol
 
 
     override fun onBindViewHolder(holder: CardHolder, position: Int) {
-        holder.type.text = "Hibiscus"
-        holder.description.text = "L'hibiscus est une plante tropicale aux fleurs éclatantes qui ajoutent une touche de couleur vibrante et exotique à tout espace."
-        holder.taille.text = "60cm"
-        holder.arrosage.text = "250ml / 7j"
-        holder.lumière.text = "Lumière indirecte"
-        holder.difficulte.text = "Moyen"
+        val cards = CardStorage.get(context).findAll()
+        if (position < cards.size) {
+            val card = cards[position]
+            holder.type.text = card.nom
+            holder.description.text = card.description
+            holder.taille.text = card.taille
+            holder.arrosage.text = card.arrosage
+            holder.lumière.text = card.lumiere
+            holder.difficulte.text = card.difficulte
+        } else {
+            Log.e("CardAdapter", "Invalid position: $position")
+        }
     }
 
 
