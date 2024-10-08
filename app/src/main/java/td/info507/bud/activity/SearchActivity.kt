@@ -5,7 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import td.info507.bud.R
-import td.info507.bud.adapter.CardAdapter
+import td.info507.bud.adapter.CardSearchAdapter
 
 class SearchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,12 +13,12 @@ class SearchActivity : AppCompatActivity() {
         setContentView(R.layout.activity_search)
 
         // Récupère RecyclerView
-        val list_of_plant = findViewById<RecyclerView>(R.id.card_list_of_plants)
+        val list_of_search_plant = findViewById<RecyclerView>(R.id.card_list_of_search_plants)
 
         // Set adapter avec listener
-        list_of_plant.adapter = object : CardAdapter() {
+        list_of_search_plant.adapter = object : CardSearchAdapter() {
             override fun onClickListener(view: View) {
-                println("Item clicked") // Action clic sur un élément
+                println("Item clicked")
             }
         }
     }
