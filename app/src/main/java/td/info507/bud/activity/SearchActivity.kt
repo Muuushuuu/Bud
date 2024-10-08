@@ -8,7 +8,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import td.info507.bud.R
 import td.info507.bud.adapter.CardSearchAdapter
 import td.info507.bud.request.CardRequest
-import td.info507.bud.storage.CardStorage
+import td.info507.bud.storage.CardStorageSearch
 
 class SearchActivity : Updatable, AppCompatActivity() {
 
@@ -22,7 +22,7 @@ class SearchActivity : Updatable, AppCompatActivity() {
 
         // Récupère RecyclerView
         list_of_plant = findViewById(R.id.card_list_of_search_plants)
-        val cards = CardStorage.get(applicationContext).findAll()
+        val cards = CardStorageSearch.get(applicationContext).findAll()
         CardRequest(applicationContext, this)
         // Set adapter avec listener
         list_of_plant.adapter = object : CardSearchAdapter(applicationContext, cards) {

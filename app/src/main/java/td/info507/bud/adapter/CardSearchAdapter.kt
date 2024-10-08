@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import td.info507.bud.R
 import td.info507.bud.modele.CardSearchModel
-import td.info507.bud.storage.CardStorage
+import td.info507.bud.storage.CardStorageSearch
 
 abstract class CardSearchAdapter(private val context: Context, val cards: List<CardSearchModel>): RecyclerView.Adapter<CardSearchAdapter.CardHolder>() {
 
@@ -43,7 +43,7 @@ abstract class CardSearchAdapter(private val context: Context, val cards: List<C
 
 
     override fun onBindViewHolder(holder: CardHolder, position: Int) {
-        val cards = CardStorage.get(context).findAll()
+        val cards = CardStorageSearch.get(context).findAll()
         if (position < cards.size) {
             val card = cards[position]
             holder.type.text = card.nom

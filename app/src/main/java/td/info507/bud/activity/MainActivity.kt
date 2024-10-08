@@ -13,6 +13,8 @@ import td.info507.bud.R
 import td.info507.bud.adapter.CardMainAdapter
 import td.info507.bud.dialog.DialogAdd
 import td.info507.bud.request.CardRequest
+import td.info507.bud.storage.CardStorageMain
+import td.info507.bud.storage.CardStorageSearch
 
 class MainActivity : Updatable, AppCompatActivity() {
 
@@ -25,9 +27,9 @@ class MainActivity : Updatable, AppCompatActivity() {
 
         // Récupère RecyclerView
         list_of_plant = findViewById(R.id.card_list_of_plants)
-
+        val cards = CardStorageMain.get(applicationContext).findAll()
         // Set adapter avec listener
-        list_of_plant.adapter = object : CardMainAdapter() {
+        list_of_plant.adapter = object : CardMainAdapter(applicationContext, cards) {
             override fun onClickListener(view: View) {
                 println("Item clicked") // Action clic sur un élément
             }
@@ -40,7 +42,7 @@ class MainActivity : Updatable, AppCompatActivity() {
 
         // Bouton flottant pour ajouter un nouvel élément
         findViewById<FloatingActionButton>(R.id.fab_add).setOnClickListener(){
-            DialogAdd().show(supportFragmentManager, null)
+            DialogAdd(this).show(supportFragmentManager, null)
         }
     }
 

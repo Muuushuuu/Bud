@@ -8,7 +8,7 @@ import com.android.volley.toolbox.Volley
 import org.json.JSONArray
 import td.info507.bud.activity.Updatable
 import td.info507.bud.modele.CardSearchModel
-import td.info507.bud.storage.CardStorage
+import td.info507.bud.storage.CardStorageSearch
 
 class CardRequest(
     private val context: Context,
@@ -33,15 +33,15 @@ class CardRequest(
     }
 
     private fun delete() {
-        for (card in CardStorage.get(context).findAll()) {
-            CardStorage.get(context).delete(card.id)
+        for (card in CardStorageSearch.get(context).findAll()) {
+            CardStorageSearch.get(context).delete(card.id)
         }
     }
 
     private fun insert(array: JSONArray) {
         for (i in 0 until array.length()) {
             val card = array.getJSONObject(i)
-            CardStorage.get(context).insert(
+            CardStorageSearch.get(context).insert(
                 CardSearchModel(
                     0,
                     card.optString(CardSearchModel.NOM, "Nom inconnu"),
