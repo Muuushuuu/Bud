@@ -1,65 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:context=".activity.MainActivity">
 
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-      android:orientation="vertical">
-      <!-- Le contenu principal de la page -->
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="vertical">
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="@string/main_activity_title"
-             android:textSize="18sp"
-             android:layout_marginBottom="16dp"
-             android:textStyle="bold"
-             android:letterSpacing="0.05"/>
-         />
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="@string/main_activity_description"
-             android:letterSpacing="0.1"/>
-      </LinearLayout>
-      <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-          android:id="@+id/card_refresh"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent">
-
-         <androidx.recyclerview.widget.RecyclerView
-             android:id="@+id/card_list_of_plants"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:scrollbars="vertical"
-             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-             android:layout_marginTop="16dp"/>
-
-      </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-   </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
 
-   <!-- Bouton flottant "add" -->
-   <com.google.android.material.floatingactionbutton.FloatingActionButton
-       android:id="@+id/fab_add"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_gravity="end|bottom"
-       android:layout_margin="16dp"
-       android:src="@drawable/ic_add"
-       app:backgroundTint="@color/primary"
-       app:tint="@color/background"/>
-   />
+        <!-- Le contenu principal de la page -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:letterSpacing="0.05"
+                android:text="@string/main_activity_title"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.1"
+                android:text="@string/main_activity_description" />
+        </LinearLayout>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/card_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/card_list_of_plants"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:scrollbars="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </LinearLayout>
+
+    <!-- Bouton flottant "add" -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_add"
+        app:backgroundTint="@color/primary"
+        app:tint="@color/background" />
+    />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

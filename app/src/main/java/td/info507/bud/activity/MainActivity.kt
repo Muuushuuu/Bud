@@ -1,6 +1,9 @@
 package td.info507.bud.activity
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
@@ -44,5 +47,17 @@ class MainActivity : Updatable, AppCompatActivity() {
     override fun update() {
         list_of_plant.adapter?.notifyDataSetChanged()
         refresh.isRefreshing = false
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.flower -> startActivity(Intent(applicationContext, SearchActivity::class.java))
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
