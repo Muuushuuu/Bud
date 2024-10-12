@@ -30,6 +30,13 @@
             android:parentActivityName=".activity.MainActivity">
 
         </activity>
+
+        <activity
+            android:name=".activity.EvolutionActivity"
+            android:exported="true"
+            android:parentActivityName=".activity.MainActivity">
+
+        </activity>
     </application>
 
 </manifest>

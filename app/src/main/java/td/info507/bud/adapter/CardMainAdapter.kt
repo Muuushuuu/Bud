@@ -53,6 +53,7 @@ abstract class CardMainAdapter(private val context: Context, val cards: List<Car
         val cards = CardStorageMain.get(context).findAll()
         if (position < cards.size) {
             val card = cards[position]
+            holder.itemView.tag = card.id
             holder.name.text = card.nom
             holder.type.text = card.type
             holder.description.text = card.description

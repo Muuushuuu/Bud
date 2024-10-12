@@ -2,6 +2,7 @@ package td.info507.bud.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -18,6 +19,10 @@ import td.info507.bud.storage.CardStorageSearch
 
 class MainActivity : Updatable, AppCompatActivity() {
 
+    companion object {
+        const val EXTRA_CARD = "EXTRA_CARD"
+    }
+
     private lateinit var list_of_plant: RecyclerView
     private lateinit var refresh: SwipeRefreshLayout
 
@@ -31,7 +36,13 @@ class MainActivity : Updatable, AppCompatActivity() {
         // Set adapter avec listener
         list_of_plant.adapter = object : CardMainAdapter(applicationContext, cards) {
             override fun onClickListener(view: View) {
-                println("Item clicked") // Action clic sur un élément
+                val cardId = view.tag as Int
+                Log.d("MainActivity", "ID de la carte à envoyer : $cardId")
+
+                val intent = Intent(applicationContext, EvolutionActivity::class.java).apply {
+                    putExtra(EXTRA_CARD, cardId)
+                }
+                startActivity(intent)
             }
         }
 
