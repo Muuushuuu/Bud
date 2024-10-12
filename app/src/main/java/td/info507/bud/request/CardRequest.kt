@@ -24,9 +24,9 @@ class CardRequest(
                 delete()
                 insert(res.getJSONArray("plants"))
                 updatable.update()
-                Toast.makeText(context, "success", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Plantes chargées", Toast.LENGTH_SHORT).show()
             },
-            { err -> Toast.makeText(context, "error", Toast.LENGTH_SHORT).show() }
+            { err -> Toast.makeText(context, "Erreur lors du chargement...", Toast.LENGTH_SHORT).show() }
         )
         queue.add(request)
         queue.start()

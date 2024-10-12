@@ -41,7 +41,7 @@ abstract class CardMainAdapter(private val context: Context, val cards: List<Car
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_card, parent, false)
         // Ajouter un Toast et un clic listener
         view.setOnClickListener {
-            Toast.makeText(parent.context, "Coucou Nathan", Toast.LENGTH_LONG).show()
+//            Toast.makeText(parent.context, "Coucou Nathan", Toast.LENGTH_LONG).show()
             onClickListener(view)
         }
         return CardHolder(view)

@@ -6,7 +6,7 @@ import td.info507.bud.modele.CardMainModel
 import td.info507.bud.storage.utility.Storage
 import td.info507.bud.storage.utility.file.JSONFileStorage
 
-class CardJSONFileStorageMain(context: Context) : JSONFileStorage<CardMainModel>(context, "plantes"),
+class CardJSONFileStorageMain(context: Context) : JSONFileStorage<CardMainModel>(context, "plt"),
     Storage<CardMainModel> {
 
     override fun create(id: Int, obj: CardMainModel): CardMainModel {
@@ -30,7 +30,7 @@ class CardJSONFileStorageMain(context: Context) : JSONFileStorage<CardMainModel>
     override fun jsonToObject(json: JSONObject): CardMainModel {
         return CardMainModel(
             json.getInt(CardMainModel.ID),
-            json.getString(CardMainModel.NOM),
+            json.optString(CardMainModel.NOM),
             json.getString(CardMainModel.TYPE),
             json.getString(CardMainModel.DESCRIPTION),
             json.getString(CardMainModel.TAILLE),
