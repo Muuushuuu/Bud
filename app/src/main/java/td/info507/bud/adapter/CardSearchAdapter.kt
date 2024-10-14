@@ -66,6 +66,6 @@ abstract class CardSearchAdapter(private val context: Context, val cards: List<C
 
 
     override fun getItemCount(): Int {
-        return 15
+        return CardStorageSearch.get(context).size()
     }
 }
