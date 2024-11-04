@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnLongClickListener
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -35,6 +36,7 @@ abstract class CardMainAdapter(private val context: Context, val cards: List<Car
 
     // Méthode abstraite pour définir une action lors du clic
     abstract fun onClickListener(view: View)
+    abstract fun onLongClickListener(view: View): Boolean
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardHolder {
         // Créer la vue de l'item
@@ -43,6 +45,10 @@ abstract class CardMainAdapter(private val context: Context, val cards: List<Car
         view.setOnClickListener {
 //            Toast.makeText(parent.context, "Coucou Nathan", Toast.LENGTH_LONG).show()
             onClickListener(view)
+        }
+
+        view.setOnLongClickListener {
+            onLongClickListener(view)
         }
         return CardHolder(view)
     }

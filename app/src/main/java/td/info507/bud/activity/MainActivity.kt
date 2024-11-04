@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -13,6 +14,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import td.info507.bud.R
 import td.info507.bud.adapter.CardMainAdapter
 import td.info507.bud.dialog.DialogAdd
+import td.info507.bud.dialog.DialogDel
 import td.info507.bud.request.CardRequest
 import td.info507.bud.storage.CardStorageMain
 import td.info507.bud.storage.CardStorageSearch
@@ -43,6 +45,12 @@ class MainActivity : Updatable, AppCompatActivity() {
                     putExtra(EXTRA_CARD, cardId)
                 }
                 startActivity(intent)
+            }
+
+            override fun onLongClickListener(view: View): Boolean {
+                val cardId = view.tag as Int
+                DialogDel(cardId, applicationContext, this@MainActivity).show(supportFragmentManager, null)
+                return true
             }
         }
 
